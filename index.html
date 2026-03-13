@@ -49,21 +49,23 @@
             display: flex; flex-direction: column; align-items: center; z-index: 10;
         }
 
-        /* SILVER GRADIENT HEADER WITH BLURPLE GLOW */
+        /* METALLIC HEADER WITH INTENSE BLURPLE GLOW */
         .main-title {
             font-family: 'Orbitron', sans-serif; font-size: 42px; font-weight: 900;
             letter-spacing: 8px; margin-bottom: 10px;
-            background: linear-gradient(to bottom, #e0e0e0 0%, #757575 50%, #424242 100%);
+            /* Silver Gradient */
+            background: linear-gradient(to bottom, #ffffff 0%, #a0a0a0 45%, #222222 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 15px rgba(138, 43, 226, 0.4));
-            animation: blurple-pulse 6s infinite ease-in-out;
+            /* Heavy dark shadow + Initial Glow */
+            filter: drop-shadow(0 4px 6px rgba(0,0,0,0.9)) drop-shadow(0 0 10px rgba(120, 0, 255, 0.4));
+            animation: blurple-pulse 5s infinite ease-in-out;
             text-transform: uppercase;
         }
 
         @keyframes blurple-pulse {
-            0%, 100% { filter: drop-shadow(0 0 10px rgba(138, 43, 226, 0.3)); }
-            50% { filter: drop-shadow(0 0 25px rgba(138, 43, 226, 0.8)); }
+            0%, 100% { filter: drop-shadow(0 4px 6px rgba(0,0,0,0.9)) drop-shadow(0 0 12px rgba(120, 0, 255, 0.3)); }
+            50% { filter: drop-shadow(0 4px 8px rgba(0,0,0,1)) drop-shadow(0 0 35px rgba(150, 0, 255, 0.9)); }
         }
 
         .top-nav {
@@ -91,9 +93,9 @@
 
         /* --- SLIDE-OUT ABOUT DRAWER --- */
         #about-drawer {
-            position: fixed; top: 0; right: -400px; /* Hidden by default */
+            position: fixed; top: 0; right: -400px;
             width: 400px; height: 100%; background: rgba(10, 5, 20, 0.85);
-            backdrop-filter: blur(10px); border-left: 1px solid #8a2be2;
+            backdrop-filter: blur(10px); border-left: 1px solid #7800ff;
             z-index: 200; transition: 0.5s cubic-bezier(0.77, 0, 0.175, 1);
             display: flex; flex-direction: column; padding: 60px 30px;
         }
@@ -102,9 +104,9 @@
         /* VERTICAL TAB */
         #about-tab {
             position: absolute; left: -40px; top: 50%; transform: translateY(-50%);
-            width: 40px; height: 120px; background: #8a2be2;
+            width: 40px; height: 120px; background: #7800ff;
             display: flex; align-items: center; justify-content: center;
-            cursor: pointer; border-radius: 8px 0 0 8px; box-shadow: -5px 0 15px rgba(138, 43, 226, 0.5);
+            cursor: pointer; border-radius: 8px 0 0 8px; box-shadow: -5px 0 20px rgba(120, 0, 255, 0.6);
         }
         #about-tab span {
             transform: rotate(-90deg); font-family: 'Orbitron', sans-serif;
@@ -188,7 +190,6 @@
     </audio>
 
     <script>
-        // HANDLE BOOT SCREEN
         document.getElementById('init-btn').addEventListener('click', function() {
             let music = document.getElementById('bg-music');
             music.volume = 0.7;
@@ -197,7 +198,6 @@
             setTimeout(() => { document.getElementById('boot-screen').style.display = 'none'; }, 1000);
         });
 
-        // HANDLE ABOUT DRAWER TOGGLE
         const drawer = document.getElementById('about-drawer');
         const tab = document.getElementById('about-tab');
 
